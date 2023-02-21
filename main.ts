@@ -1,7 +1,5 @@
 pins.onPulsed(DigitalPin.P0, PulseValue.Low, function () {
-    while (debute == 2) {
-        Fentes += 1
-    }
+    Fentes += 1
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "Go") {
@@ -22,10 +20,12 @@ let f2 = 0
 debute = 0
 basic.showIcon(IconNames.No)
 basic.forever(function () {
-    f1 = Fentes
-    if (f1 > f2) {
-        radio.sendString("" + (Fentes))
+    while (debute == 2) {
+        f1 = Fentes
+        if (f1 > f2) {
+            radio.sendString("" + (Fentes))
+        }
+        f2 = f1
+        basic.pause(10)
     }
-    f2 = f1
-    basic.pause(10)
 })
