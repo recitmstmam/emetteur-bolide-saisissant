@@ -3,9 +3,9 @@ pins.onPulsed(DigitalPin.P0, PulseValue.High, function () {
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "Go") {
-        basic.pause(2000)
-        basic.showIcon(IconNames.Yes)
         debute = 2
+        basic.pause(3000)
+        basic.showIcon(IconNames.Yes)
     } else {
         basic.showIcon(IconNames.No)
         debute = 0
@@ -26,6 +26,6 @@ basic.forever(function () {
             radio.sendNumber(Fentes)
         }
         f2 = f1
-        basic.pause(100)
+        basic.pause(50)
     }
 })
