@@ -1,4 +1,4 @@
-pins.onPulsed(DigitalPin.P0, PulseValue.Low, function () {
+pins.onPulsed(DigitalPin.P0, PulseValue.High, function () {
     Fentes += 1
 })
 radio.onReceivedString(function (receivedString) {
@@ -13,7 +13,7 @@ radio.onReceivedString(function (receivedString) {
 })
 let debute = 0
 radio.setGroup(1)
-pins.setPull(DigitalPin.P0, PinPullMode.PullUp)
+pins.setPull(DigitalPin.P0, PinPullMode.PullDown)
 let Fentes = 0
 let f1 = 0
 let f2 = 0
@@ -26,6 +26,6 @@ basic.forever(function () {
             radio.sendNumber(Fentes)
         }
         f2 = f1
-        basic.pause(10)
+        basic.pause(100)
     }
 })
