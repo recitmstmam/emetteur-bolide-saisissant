@@ -1,17 +1,26 @@
-input.onButtonPressed(Button.A, function () {
-    basic.showIcon(IconNames.Diamond)
-    basic.pause(1000)
-    basic.showIcon(IconNames.SmallDiamond)
-    control.reset()
-})
 pins.onPulsed(DigitalPin.P0, PulseValue.Low, function () {
-    Fentes += 1
+    while (debute == 2) {
+        Fentes += 1
+    }
 })
+radio.onReceivedString(function (receivedString) {
+    if (receivedString == "Go") {
+        basic.pause(2000)
+        basic.showIcon(IconNames.Yes)
+        debute = 2
+    } else {
+        basic.showIcon(IconNames.No)
+        debute = 0
+    }
+})
+let debute = 0
 radio.setGroup(1)
 pins.setPull(DigitalPin.P0, PinPullMode.PullUp)
 let Fentes = 0
 let f1 = 0
 let f2 = 0
+debute = 0
+basic.showIcon(IconNames.No)
 basic.forever(function () {
     f1 = Fentes
     if (f1 > f2) {
