@@ -23,7 +23,7 @@ basic.forever(function () {
     while (debute == 2) {
         f1 = Fentes
         if (f1 > f2) {
-            radio.sendString("" + (Fentes))
+            radio.sendNumber(Fentes)
         }
         f2 = f1
         basic.pause(10)
