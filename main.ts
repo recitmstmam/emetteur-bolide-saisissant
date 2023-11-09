@@ -1,6 +1,16 @@
 pins.onPulsed(DigitalPin.P0, PulseValue.High, function () {
     Fentes += 1
 })
+input.onButtonPressed(Button.A, function () {
+    basic.showLeds(`
+        # # # # #
+        # # # # #
+        # # # # #
+        # # # # #
+        # # # # #
+        `)
+    control.reset()
+})
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "Go") {
         debute = 2
@@ -12,6 +22,7 @@ radio.onReceivedString(function (receivedString) {
     }
 })
 let debute = 0
+// Modifier le nombre et écrire le numéro de votre poste de travail.
 radio.setGroup(1)
 pins.setPull(DigitalPin.P0, PinPullMode.PullDown)
 let Fentes = 0
